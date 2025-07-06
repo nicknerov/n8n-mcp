@@ -33,8 +33,7 @@ RUN apk add --no-cache curl && \
 COPY package.runtime.json package.json
 
 # Install runtime dependencies with cache mount
-RUN --mount=type=cache,target=/root/.npm \
-    npm install --production --no-audit --no-fund
+RUN npm install --production --no-audit --no-fund
 
 # Copy built application
 COPY --from=builder /app/dist ./dist
